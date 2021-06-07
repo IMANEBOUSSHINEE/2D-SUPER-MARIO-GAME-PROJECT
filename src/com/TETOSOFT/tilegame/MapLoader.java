@@ -87,16 +87,7 @@ public class MapLoader
 
         return newImage;
     }
-    
-    public TileMap loadGameOver() {
-    	TileMap map = null;
-    	try {
-			map = loadMap(
-			        "maps/game-over.txt");
-		} catch (IOException e) {
-			e.printStackTrace();}
-    	return map;
-    } 
+
 
     public TileMap loadNextMap() 
     {
@@ -262,7 +253,7 @@ public class MapLoader
 
         // load left-facing images
         images[0] = new Image[] {
-            loadImage("player.png"),         
+            loadImage("player.jfif"),         
             loadImage("fly1.png"),
             loadImage("fly2.png"),
             loadImage("fly3.png"),

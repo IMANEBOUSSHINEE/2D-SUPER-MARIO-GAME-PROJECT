@@ -139,7 +139,7 @@ public abstract class Creature extends Sprite {
 
 
     /**
-        Updates the animaton for this creature.
+        Updates the animation for this creature.
     */
     public void update(long elapsedTime) {
         // select the correct Animation

@@ -12,11 +12,12 @@ public class InputManager implements KeyListener, MouseListener,
 {
     
     public static final Cursor INVISIBLE_CURSOR =
-        Toolkit.getDefaultToolkit().createCustomCursor(
-            Toolkit.getDefaultToolkit().getImage(""),
-            new Point(0,0),
-            "invisible");
-
+        Toolkit.getDefaultToolkit().createCustomCursor( Toolkit.getDefaultToolkit().getImage(""), new Point(0,0), "invisible");
+     public static final Cursor VISIBLE_CURSOR =
+        Toolkit.getDefaultToolkit().createCustomCursor( Toolkit.getDefaultToolkit().getImage("images/cursor.png"), new Point(0,0), "visible");
+    
+     
+    
     
     public static final int MOUSE_MOVE_LEFT = 0;
     public static final int MOUSE_MOVE_RIGHT = 1;
@@ -48,19 +49,23 @@ public class InputManager implements KeyListener, MouseListener,
         this.comp = comp;
         mouseLocation = new Point();
         centerLocation = new Point();
-
+        
         comp.addKeyListener(this);
         comp.addMouseListener(this);
         comp.addMouseMotionListener(this);
         comp.addMouseWheelListener(this);
 
         comp.setFocusTraversalKeysEnabled(false);
+       
+
     }
 
 
     public void setCursor(Cursor cursor) 
     {
+        
         comp.setCursor(cursor);
+       
     }
 
 

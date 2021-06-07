@@ -1,7 +1,10 @@
 package com.TETOSOFT.test;
 
 import java.awt.*;
-import javax.swing.ImageIcon;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.*;
 
 import com.TETOSOFT.graphics.ScreenManager;
 
@@ -28,8 +31,6 @@ public abstract class GameCore {
     private boolean isRunning;
     protected ScreenManager screen;
 
-
-
     /**
         Signals the game loop that it's time to quit
     */
@@ -38,14 +39,14 @@ public abstract class GameCore {
     }
 
 
-  
     /**
         Calls init() and gameLoop()
     */
     public void run() {
         try {
             init();
-            gameLoop();
+    
+          gameLoop();
         }
         finally {
             screen.restoreScreen();
@@ -58,7 +59,7 @@ public abstract class GameCore {
         Exits the VM from a daemon thread. The daemon thread waits
         2 seconds then calls System.exit(0). Since the VM should
         exit when only daemon threads are running, this makes sure
-        System.exit(0) is only called if neccesary. It's neccesary
+        System.exit(0) is only called if necessary. It's necessary
         if the Java Sound system is running.
     */
     public void lazilyExit() {
@@ -81,21 +82,29 @@ public abstract class GameCore {
     /**
         Sets full screen mode and initiates and objects.
     */
+
+
+	
+	
     public void init() 
     {
         screen = new ScreenManager();
-        DisplayMode displayMode =
-        screen.findFirstCompatibleMode(POSSIBLE_MODES);
+        DisplayMode displayMode = screen.findFirstCompatibleMode(POSSIBLE_MODES);
+       // screen.setFullScreen(new DisplayMode(1600, 900, 32, 60)) ;       
         screen.setFullScreen(displayMode);
 
         Window window = screen.getFullScreenWindow();
+  
         window.setFont(new Font("Dialog", Font.PLAIN, FONT_SIZE));
         window.setBackground(Color.BLACK);
         window.setForeground(Color.WHITE);
+       
 
         isRunning = true;
+ 
     }
 
+ 
 
     public Image loadImage(String fileName) {
         return new ImageIcon(fileName).getImage();
@@ -109,11 +118,12 @@ public abstract class GameCore {
         long startTime = System.currentTimeMillis();
         long currTime = startTime;
 
+     
         while (isRunning) {
-            long elapsedTime =
-                System.currentTimeMillis() - currTime;
+        	
+        	long elapsedTime = System.currentTimeMillis() - currTime;
             currTime += elapsedTime;
-
+  
             // update
             update(elapsedTime);
 
@@ -122,14 +132,10 @@ public abstract class GameCore {
             draw(g);
             g.dispose();
             screen.update();
-
-            // don't take a nap! run as fast as possible
-            /*try {
-                Thread.sleep(20);
-            }
-            catch (InterruptedException ex) { }*/
+      
         }
     }
+
 
 
     /**
@@ -138,6 +144,7 @@ public abstract class GameCore {
     */
     public void update(long elapsedTime) {
         // do nothing
+    	
     }
 
 

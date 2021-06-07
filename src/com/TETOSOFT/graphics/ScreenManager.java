@@ -79,14 +79,11 @@ public class ScreenManager
     {
         final JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //frame.setUndecorated(true);
+        frame.setUndecorated(true);
         frame.setIgnoreRepaint(true);
-        //frame.setResizable(false);
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        frame.setSize(screenSize.width, screenSize.height);
+        frame.setResizable(false);
 
         device.setFullScreenWindow(frame);
-        
 
         if (displayMode != null && device.isDisplayChangeSupported())
         {
@@ -196,6 +193,7 @@ public class ScreenManager
             window.dispose();
         }
         device.setFullScreenWindow(null);
+     
     }
 
 
